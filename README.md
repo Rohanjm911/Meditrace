@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <img src="./docs/images/dashboard-preview.png" alt="Medi Trace Platform Interface" width="900" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" />
+  <img src="./docs/images/ui-dashboard-admin.png" alt="Medi Trace National Regulatory Command Center Interface" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" />
 </p>
 
 ---
@@ -30,9 +30,11 @@
 
 - [Overview](#-overview)
 - [Key Architectural Pillars](#-key-architectural-pillars)
+- [Live UI Showcase & Visual Tour](#-live-ui-showcase--visual-tour)
 - [Web Application & Site Access](#-web-application--site-access)
 - [Site Navigation & Complete Page-by-Page Tour](#-site-navigation--complete-page-by-page-tour)
   - [Page 1: Cyber-Pharma Authentication Portal (`/login`)](#-page-1-cyber-pharma-authentication-portal-login)
+  - [Interactive Onboarding: "How to Use" User Guide Modal](#-interactive-onboarding-how-to-use-user-guide-modal)
   - [Page 2: Role-Tailored Command Dashboards (`/`)](#-page-2-role-tailored-command-dashboards-)
   - [Page 3: Pharmaceutical Medicine Catalogue (`/medicines`)](#-page-3-pharmaceutical-medicine-catalogue-medicines)
   - [Page 4: Batch Serialization & Lot Lifecycle (`/batches`)](#-page-4-batch-serialization--lot-lifecycle-batches)
@@ -140,6 +142,64 @@ sequenceDiagram
 
 ---
 
+## 📸 Live UI Showcase & Visual Tour
+
+Here is a visual showcase of the latest user interface captures from the live Medi Trace platform:
+
+### 1. 📊 National Regulatory Command Center (`ADMIN`)
+<p align="center">
+  <img src="./docs/images/ui-dashboard-admin.png" alt="National Regulatory Command Center" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);" />
+</p>
+
+> **Description:** The central regulatory inspectorate view (CDSCO/FDA node). Features the national oversight banner with active consensus validation, nationwide KPI counters, real-time cryogenic sentinel radar (5 probes broadcasting at 5000ms intervals), the animated 4-stage distributed custody pipeline, national batch volume allocation bar charts, compliance status donut breakdowns, and live consortium peer status cards (`CDSCO Regulatory Authority`, `Pfizer Bio-Pharma Labs`, `MedExpress Logistics`, `Nordic Vaccine Depot`, `Apollo Pharmacy`).
+
+---
+
+### 2. 📖 Interactive "How to Use" Operational User Guide Modal
+<p align="center">
+  <img src="./docs/images/ui-user-guide-modal.png" alt="Interactive User Guide Modal Popup" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);" />
+</p>
+
+> **Description:** The automated onboarding modal that launches immediately upon logging in (and is accessible anytime via the **"How to Use"** button in the sticky header). Structured into 4 interactive tabs: *1. Platform Overview & 4-Stage Supply Chain Journey*, *2. Optical Scanner & Verification with 1-Click Test Presets*, *3. Cold-Chain IoT Radar & Excursion Simulation*, and *4. Roles & 21 CFR Part 11 PDF Export Dossiers*. Includes a persistent "Don't show this guide on login" toggle.
+
+---
+
+### 3. 🔍 Zero-Trust Anti-Counterfeit Verification Station (`/verify`)
+<p align="center">
+  <img src="./docs/images/ui-verification-scanner.png" alt="Zero-Trust Optical Verification Station" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);" />
+</p>
+
+> **Description:** Optical anti-counterfeit scanning interface powered by `@zxing/library`. Features the high-tech holographic targeting reticle, cybernetic neon scan laser, acoustic soundwave visualizer bars, and a universal GS1 DataMatrix forensic deconstructor (unpacking AI `(01)` GTIN, AI `(17)` Expiry, AI `(10)` Batch, and AI `(21)` Serial Number). Instant preset buttons allow operators to test authentic vaccines, standard GS1 formats, thermal excursion breaches, and unregistered counterfeit clones.
+
+---
+
+### 4. ❄️ Cold-Chain IoT Radar & Interactive GIS Route Map (`/cold-chain`)
+<p align="center">
+  <img src="./docs/images/ui-cold-chain-map.png" alt="Cold-Chain IoT Radar and Interactive GIS Route Map" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);" />
+</p>
+
+> **Description:** Interactive topological GIS routing canvas tracking pharmaceutical freight across the **Pune ➔ Mumbai ➔ Surat ➔ Ahmedabad** supply corridor. Displays animated transit vector streams, vehicle waypoints, live sensor telemetry cards (temperature down to -90°C, relative humidity, battery level, GPS ping), and simulation controls (`Trigger Excursion (>8°C)`, `Stabilize (4°C)`, `Drain Battery`) for testing real-world QA incident triage.
+
+---
+
+### 5. ⛓️ Distributed Cryptographic Blockchain Ledger Explorer (`/blockchain`)
+<p align="center">
+  <img src="./docs/images/ui-blockchain-ledger.png" alt="Distributed Cryptographic Blockchain Ledger Explorer" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);" />
+</p>
+
+> **Description:** Comprehensive on-chain ledger explorer detailing block heights, block hashes, previous block hashes, Merkle roots, transaction payloads, and peer endorsement signatures. Features a 1-click **Cryptographic Ledger State Validator** that recalculates the full Merkle tree to prove zero tampering across all historical blocks.
+
+---
+
+### 6. 🔐 Cyber-Pharma Authentication Portal (`/login`)
+<p align="center">
+  <img src="./docs/images/ui-login-portal.png" alt="Cyber-Pharma Dark Authentication Portal" width="920" style="border: 2px solid #0f172a; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);" />
+</p>
+
+> **Description:** Split-screen authentication terminal designed in Cyber-Pharma Dark Mode (`bg-slate-950`). Features a live simulated Ultra-Low Temperature vaccine cryo-probe (`-74.8°C` with pulsating compliance beacon and ECG waveform), an animated 4-stage supply chain transit stream, and prominent **1-Click Quick Role Switcher** buttons allowing instant access as Admin, Manufacturer, Distributor, Warehouse Operator, or Pharmacist.
+
+---
+
 ## 🌐 Web Application & Site Access
 
 Medi Trace is designed with a **dual-access model** that allows it to operate both as a high-performance web application inside any modern desktop or tablet web browser, and as a native standalone Windows desktop application:
@@ -199,6 +259,26 @@ flowchart TD
 - **1-Click Quick Role Switcher:** Five prominent gradient buttons allowing instantaneous authentication as an Admin, Manufacturer, Distributor, Warehouse Operator, or Pharmacist with zero manual credential typing.
 - **Security Primitives:** Validated against the backend via Argon2id cryptographic hashing and JWT session tokens.
 
+<p align="center">
+  <img src="./docs/images/ui-login-portal.png" alt="Cyber-Pharma Authentication Portal Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
+</p>
+
+---
+
+### 📖 Interactive Onboarding: "How to Use" User Guide Modal
+- **Automatic Post-Login Launch:** Detects whenever an authenticated session is initiated and automatically opens the operational user guide modal.
+- **Permanent Top Header Button:** Outfitted with a dedicated **"How to Use"** guide button in [`Header.tsx`](file:///d:/projects%20and%20certificates/projects/block/Meditrace/apps/desktop/src/components/layout/Header.tsx) with a `HelpCircle` icon for instant 1-click access anytime.
+- **4 Structured Interactive Tabs:**
+  1. *Platform Overview:* Infographic breakdown of the 4-stage verified supply chain journey.
+  2. *Optical Scanner & Verification:* Instructions for webcam and manual GS1 decoding, decision matrix, and live 1-click test batch buttons.
+  3. *Cold-Chain IoT & Alerts:* Guide to the topological route radar map, probe readings, and real-time excursion simulation triggers.
+  4. *Roles & PDF Dossiers:* Overview of the 5 scoped role consoles and 21 CFR Part 11 PDF export engine.
+- **User Preference Memory:** Includes a *"Don't show this guide automatically on login"* checkbox stored in `localStorage`.
+
+<p align="center">
+  <img src="./docs/images/ui-user-guide-modal.png" alt="Interactive User Guide Modal Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
+</p>
+
 ---
 
 ### 📊 Page 2: Role-Tailored Command Dashboards (`/`)
@@ -220,6 +300,10 @@ Rather than a generic layout, the dashboard detects the active user's role and r
 5. **Retail Dispensing & Anti-Counterfeit Desk (`PHARMACIST`):**
    - Countertop POS verification terminal with quick-scan batch code input.
    - Dispensing inventory count, verified authentic unit logs, and counterfeit discrepancy flags (`100% Genuine`).
+
+<p align="center">
+  <img src="./docs/images/ui-dashboard-admin.png" alt="National Regulatory Command Center Dashboard Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
+</p>
 
 ---
 
@@ -266,7 +350,7 @@ Rather than a generic layout, the dashboard detects the active user's role and r
   - ⚡ `Drain Battery` — Simulates sensor power loss for maintenance triage.
 
 <p align="center">
-  <img src="./docs/images/cold-chain-telemetry.svg" alt="Animated Cold-Chain Telemetry Radar" width="880" />
+  <img src="./docs/images/ui-cold-chain-map.png" alt="Cold-Chain Monitoring & GIS Route Map Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
 </p>
 
 ```mermaid
@@ -309,7 +393,7 @@ pie title Cold-Chain Fleet Telemetry Distribution by Storage Class
 - **Interactive Troubleshooting Guide:** Built-in guidance panel explaining verification outcomes with 1-click test buttons for authentic, in-transit, excursion-flagged, and counterfeit batches.
 
 <p align="center">
-  <img src="./docs/images/scanner-hud.svg" alt="Animated Optical GS1 DataMatrix Scanner HUD" width="880" />
+  <img src="./docs/images/ui-verification-scanner.png" alt="Optical GS1 Verification Station Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
 </p>
 
 ```mermaid
@@ -348,7 +432,7 @@ flowchart TD
 - **Raw Transaction Payload Inspector:** View serialized transaction metadata, endorsing peer signatures, and smart contract function invocations.
 
 <p align="center">
-  <img src="./docs/images/blockchain-consensus.svg" alt="Animated Cryptographic Blockchain Consensus Pipeline" width="880" />
+  <img src="./docs/images/ui-blockchain-ledger.png" alt="Cryptographic Blockchain Ledger Explorer Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
 </p>
 
 ---
@@ -416,7 +500,7 @@ Every interactive element, card container, command banner, modal window, and inp
 ### 🔔 Synthesized Acoustic Feedback System (`soundService.ts`)
 Tactile acoustic sound synthesis built with the native Web Audio API (zero external audio file downloads):
 - **Click Sound:** Subtle sine pulse on navigation and button clicks.
-- **Modal Transition:** Smooth pitch sweep on dialog open/close.
+- **Modal Transition:** Smooth pitch sweep on dialog open/close (`playModalOpen()`, `playModalClose()`).
 - **Harmonic Success:** 4-tone ascending major chord when completing an operation.
 - **Thermal Alert:** Distinct double-frequency warning sound when an excursion triggers.
 - **Mute / Unmute:** Click the speaker icon in the top header at any time to toggle acoustic feedback.
@@ -424,7 +508,7 @@ Tactile acoustic sound synthesis built with the native Web Audio API (zero exter
 ### 📣 Toast Notification Center & Persistent History Drawer
 - **Real-Time Pop-Up Alerts:** High-contrast outlined toasts with dynamic countdown timers, pause-on-hover, and instant dismiss controls.
 - **Notification History Center:** Dropdown drawer in the header logging all real-time events with test trigger controls (`Success`, `Alert`, `Error`).
-- **Sticky Glassmorphic Header:** Floats docked at the top of the viewport with a blurred backdrop (`backdrop-blur-md`) and accent gradient indicator.
+- **Sticky Glassmorphic Header:** Floats docked at the top of the viewport with a blurred backdrop (`backdrop-blur-md`), accent gradient indicator, and the permanent **"How to Use"** guide launcher.
 
 ---
 
@@ -527,6 +611,7 @@ Meditrace/
 │       │   ├── 📁 components/               # Reusable high-contrast design system components
 │       │   │   ├── 📁 coldchain/            # Interactive GIS Route Map & telemetry gauges
 │       │   │   ├── 📁 common/               # Button, Modal, Card, StatCard, Badge, Toasts
+│       │   │   ├── 📁 guide/                # HowToUseModal interactive user guide
 │       │   │   └── 📁 layout/               # Sticky Header, Category Sidebar, AppLayout
 │       │   ├── 📁 context/                  # React Contexts (AuthContext, ToastContext, ThemeContext)
 │       │   ├── 📁 pages/                    # 14 Enterprise Application Functional Pages
@@ -570,6 +655,7 @@ Meditrace/
 │       └── 📄 tsconfig.json                 # TypeScript build configuration
 │
 ├── 📁 scripts/
+│   ├── 📄 capture-screenshots.js            # Automated headless UI screenshot capturer
 │   ├── 📄 db-setup.js                       # Non-Docker PostgreSQL cluster & DB initializer
 │   ├── 📄 db-seed.js                        # Multi-tenant enterprise role demo dataset seeder
 │   └── 📄 start-all.js                      # Cross-platform concurrency process orchestrator
@@ -582,15 +668,21 @@ Meditrace/
 │       └── 📄 tsconfig.json                 # Simulator TypeScript configuration
 │
 ├── 📁 docs/
-│   └── 📁 images/                           # High-resolution architectural previews & screenshots
+│   └── 📁 images/                           # High-resolution architectural previews & UI captures
 │       ├── 🖼️ logo.png                      # Official project emblem
-│       ├── 🖼️ dashboard-preview.png         # Main application dashboard preview screenshot
+│       ├── 🖼️ ui-dashboard-admin.png        # Live capture: National Regulatory Command Center
+│       ├── 🖼️ ui-user-guide-modal.png       # Live capture: "How to Use" operational guide popup
+│       ├── 🖼️ ui-verification-scanner.png   # Live capture: Optical GS1 DataMatrix scanner HUD
+│       ├── 🖼️ ui-cold-chain-map.png         # Live capture: Interactive GIS Route Map
+│       ├── 🖼️ ui-blockchain-ledger.png      # Live capture: Distributed ledger block explorer
+│       ├── 🖼️ ui-login-portal.png           # Live capture: Cyber-Pharma Dark login terminal
 │       ├── 🖼️ blockchain-consensus.svg      # Animated blockchain consensus pipeline
 │       ├── 🖼️ cold-chain-telemetry.svg      # Animated cold-chain telemetry radar
 │       └── 🖼️ scanner-hud.svg               # Animated optical scanner HUD
 │
 ├── 📄 .env                                  # Active environment configuration
 ├── 📄 .env.example                          # Sample environment configuration template
+├── 📄 .gitignore                            # Clean Git repository ignore specifications
 ├── 📄 EXTENSIONS_AND_PACKAGES_NEEDED.md     # 38 Tech stack packages with authentic badges
 ├── 📄 HOW_TO_RUN.md                         # Detailed step-by-step setup and launch guide
 ├── 📄 PROJECT_PROGRESS.md                   # Chronological project milestones and audit history
@@ -624,7 +716,7 @@ Meditrace/
 
 ### Step 1: Clone Repository & Install Dependencies
 ```powershell
-git clone <repository-url>
+git clone https://github.com/Rohanjm911/Meditrace.git
 cd Meditrace
 npm install
 ```
