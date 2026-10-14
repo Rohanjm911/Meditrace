@@ -1,0 +1,102 @@
+{
+  "name": "meditrace-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "ManufacturerOrg",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "meditracechannel": {
+      "orderers": ["orderer.meditrace.internal"],
+      "peers": {
+        "peer0.manufacturer.meditrace.internal": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        },
+        "peer0.distributor.meditrace.internal": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        },
+        "peer0.warehouse.meditrace.internal": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        },
+        "peer0.pharmacy.meditrace.internal": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        }
+      }
+    }
+  },
+  "organizations": {
+    "ManufacturerOrg": {
+      "mspid": "ManufacturerMSP",
+      "peers": ["peer0.manufacturer.meditrace.internal"],
+      "cryptoPath": "organizations/peerOrganizations/manufacturer.meditrace.internal/users/Admin@manufacturer.meditrace.internal/msp"
+    },
+    "DistributorOrg": {
+      "mspid": "DistributorMSP",
+      "peers": ["peer0.distributor.meditrace.internal"],
+      "cryptoPath": "organizations/peerOrganizations/distributor.meditrace.internal/users/Admin@distributor.meditrace.internal/msp"
+    },
+    "WarehouseOrg": {
+      "mspid": "WarehouseMSP",
+      "peers": ["peer0.warehouse.meditrace.internal"],
+      "cryptoPath": "organizations/peerOrganizations/warehouse.meditrace.internal/users/Admin@warehouse.meditrace.internal/msp"
+    },
+    "PharmacyOrg": {
+      "mspid": "PharmacyMSP",
+      "peers": ["peer0.pharmacy.meditrace.internal"],
+      "cryptoPath": "organizations/peerOrganizations/pharmacy.meditrace.internal/users/Admin@pharmacy.meditrace.internal/msp"
+    }
+  },
+  "orderers": {
+    "orderer.meditrace.internal": {
+      "url": "grpcs://localhost:7050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer.meditrace.internal"
+      }
+    }
+  },
+  "peers": {
+    "peer0.manufacturer.meditrace.internal": {
+      "url": "grpcs://localhost:7051",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.manufacturer.meditrace.internal"
+      }
+    },
+    "peer0.distributor.meditrace.internal": {
+      "url": "grpcs://localhost:8051",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.distributor.meditrace.internal"
+      }
+    },
+    "peer0.warehouse.meditrace.internal": {
+      "url": "grpcs://localhost:9051",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.warehouse.meditrace.internal"
+      }
+    },
+    "peer0.pharmacy.meditrace.internal": {
+      "url": "grpcs://localhost:10051",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.pharmacy.meditrace.internal"
+      }
+    }
+  }
+}

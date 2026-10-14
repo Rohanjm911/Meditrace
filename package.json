@@ -1,0 +1,37 @@
+{
+  "name": "meditrace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MediTrace - Pharmaceutical authenticity, anti-counterfeit medicine verification, blockchain traceability, and vaccine cold-chain monitoring",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev": "npm run start:all",
+    "dev:api": "npm run --workspace=@meditrace/api dev",
+    "dev:desktop": "npm run --workspace=@meditrace/desktop dev",
+    "dev:simulator": "npm run --workspace=@meditrace/iot-simulator dev",
+    "start:all": "node scripts/start-all.js",
+    "build": "npm run build --workspaces",
+    "test": "npm run --workspace=@meditrace/api test",
+    "db:setup": "node scripts/db-setup.js",
+    "db:seed": "node scripts/db-seed.js",
+    "db:studio": "npx --prefix apps/api prisma studio --schema=database/prisma/schema.prisma",
+    "package:win": "npm run --workspace=@meditrace/desktop package:win",
+    "lint": "npm run typecheck",
+    "typecheck": "npm run typecheck --workspaces"
+  },
+  "keywords": [
+    "pharmaceutical",
+    "traceability",
+    "cold-chain",
+    "hyperledger-fabric",
+    "blockchain",
+    "electron"
+  ],
+  "author": "MediTrace Team",
+  "license": "UNLICENSED"
+}

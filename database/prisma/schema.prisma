@@ -1,0 +1,368 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  MANUFACTURER
+  DISTRIBUTOR
+  WAREHOUSE_OPERATOR
+  PHARMACIST
+}
+
+enum OrganizationType {
+  MANUFACTURER
+  DISTRIBUTOR
+  WAREHOUSE
+  PHARMACY
+  REGULATOR
+}
+
+enum BatchStatus {
+  REGISTERED
+  IN_TRANSIT
+  STORED
+  DELIVERED
+  RECALLED
+  QUARANTINED
+}
+
+enum ShipmentStatus {
+  CREATED
+  DISPATCHED
+  IN_TRANSIT
+  DELIVERED
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}
+
+enum HandoffStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum AlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AlertStatus {
+  ACTIVE
+  ACKNOWLEDGED
+  RESOLVED
+}
+
+enum VerificationStatus {
+  VERIFIED
+  INCONCLUSIVE
+  INVALID
+  TAMPERED
+  DUPLICATE_SUSPICIOUS
+  FLAGGED_REVIEW
+}
+
+model Organization {
+  id           String           @id @default(uuid())
+  name         String
+  type         OrganizationType
+  licenseNumber String          @unique
+  address      String
+  contactEmail String
+  contactPhone String
+  isActive     Boolean          @default(true)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  users        User[]
+  products     Product[]
+  batches      Batch[]
+  sentShipments     Shipment[] @relation("SenderOrg")
+  receivedShipments Shipment[] @relation("RecipientOrg")
+  sentHandoffs      HandoffEvent[] @relation("HandoffSenderOrg")
+  receivedHandoffs  HandoffEvent[] @relation("HandoffRecipientOrg")
+
+  @@map("organizations")
+}
+
+model User {
+  id             String       @id @default(uuid())
+  email          String       @unique
+  passwordHash   String
+  fullName       String
+  role           UserRole
+  organizationId String
+  isActive       Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  sentHandoffs   HandoffEvent[] @relation("HandoffSenderUser")
+  receivedHandoffs HandoffEvent[] @relation("HandoffRecipientUser")
+  acknowledgedAlerts TemperatureAlert[]
+  auditLogs      AuditLog[]
+
+  @@map("users")
+}
+
+model Product {
+  id                   String       @id @default(uuid())
+  name                 String
+  genericName          String
+  gtin                 String       @unique
+  dosageForm           String
+  strength             String
+  manufacturerId       String
+  description          String
+  minTempCelsius       Float
+  maxTempCelsius       Float
+  requiresColdChain    Boolean      @default(false)
+  regulatoryApprovalId String
+  isActive             Boolean      @default(true)
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  manufacturer         Organization @relation(fields: [manufacturerId], references: [id])
+  batches              Batch[]
+
+  @@map("products")
+}
+
+model Batch {
+  id                   String       @id @default(uuid())
+  batchNumber          String       @unique
+  productId            String
+  manufacturerId       String
+  mfgDate              DateTime
+  expDate              DateTime
+  quantity             Int
+  remainingQuantity    Int
+  unitOfMeasure        String       @default("vials")
+  minTempCelsius       Float
+  maxTempCelsius       Float
+  status               BatchStatus  @default(REGISTERED)
+  canonicalHash        String?
+  blockchainTxId       String?
+  blockchainConfirmed  Boolean      @default(false)
+  blockchainMode       String       @default("DEMO_INTEGRITY")
+  qrPayload            String
+  gs1DataMatrixPayload String
+  notes                String?
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  product              Product      @relation(fields: [productId], references: [id])
+  manufacturer         Organization @relation(fields: [manufacturerId], references: [id])
+  shipmentItems        ShipmentItem[]
+  sensorReadings       SensorReading[]
+  alerts               TemperatureAlert[]
+  scanAudits           ProductScanAudit[]
+
+  @@map("batches")
+}
+
+model Shipment {
+  id                  String          @id @default(uuid())
+  trackingNumber      String          @unique
+  senderOrgId         String
+  recipientOrgId       String
+  assignedCarrier     String?
+  status              ShipmentStatus  @default(CREATED)
+  originLocation      String
+  destinationLocation String
+  sensorId            String?
+  blockchainTxId      String?
+  blockchainConfirmed Boolean         @default(false)
+  dispatchTime        DateTime?
+  deliveryTime        DateTime?
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  senderOrg           Organization    @relation("SenderOrg", fields: [senderOrgId], references: [id])
+  recipientOrg         Organization    @relation("RecipientOrg", fields: [recipientOrgId], references: [id])
+  sensor              Sensor?         @relation(fields: [sensorId], references: [id])
+  items               ShipmentItem[]
+  handoffs            HandoffEvent[]
+  sensorReadings      SensorReading[]
+  alerts              TemperatureAlert[]
+
+  @@map("shipments")
+}
+
+model ShipmentItem {
+  id         String   @id @default(uuid())
+  shipmentId String
+  batchId    String
+  quantity   Int
+  createdAt  DateTime @default(now())
+
+  shipment   Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  batch      Batch    @relation(fields: [batchId], references: [id])
+
+  @@map("shipment_items")
+}
+
+model HandoffEvent {
+  id                  String        @id @default(uuid())
+  shipmentId          String
+  senderOrgId         String
+  senderUserId        String
+  recipientOrgId       String
+  recipientUserId     String?
+  status              HandoffStatus @default(PENDING)
+  location            String
+  notes               String?
+  rejectionReason     String?
+  blockchainTxId      String?
+  blockchainConfirmed Boolean       @default(false)
+  timestamp           DateTime      @default(now())
+
+  shipment            Shipment      @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  senderOrg           Organization  @relation("HandoffSenderOrg", fields: [senderOrgId], references: [id])
+  recipientOrg         Organization  @relation("HandoffRecipientOrg", fields: [recipientOrgId], references: [id])
+  senderUser          User          @relation("HandoffSenderUser", fields: [senderUserId], references: [id])
+  recipientUser       User?         @relation("HandoffRecipientUser", fields: [recipientUserId], references: [id])
+
+  @@map("handoff_events")
+}
+
+model Sensor {
+  id            String          @id @default(uuid())
+  serialNumber  String          @unique
+  name          String
+  location      String
+  type          String          @default("TEMPERATURE_IoT")
+  batteryLevel  Float           @default(100.0)
+  isActive      Boolean         @default(true)
+  isSimulated   Boolean         @default(true)
+  lastReadingAt DateTime?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  shipments     Shipment[]
+  readings      SensorReading[]
+  alerts        TemperatureAlert[]
+
+  @@map("sensors")
+}
+
+model SensorReading {
+  id                 String    @id @default(uuid())
+  sensorId           String
+  batchId            String?
+  shipmentId         String?
+  temperatureCelsius Float
+  humidityPercent    Float?
+  isSimulated        Boolean   @default(true)
+  isExcursion        Boolean   @default(false)
+  batteryLevel       Float?
+  location           String?
+  timestamp          DateTime  @default(now())
+
+  sensor             Sensor    @relation(fields: [sensorId], references: [id])
+  batch              Batch?    @relation(fields: [batchId], references: [id])
+  shipment           Shipment? @relation(fields: [shipmentId], references: [id])
+
+  @@index([sensorId, timestamp])
+  @@index([batchId, timestamp])
+  @@index([shipmentId, timestamp])
+  @@map("sensor_readings")
+}
+
+model TemperatureAlert {
+  id                   String        @id @default(uuid())
+  sensorId             String
+  batchId              String?
+  shipmentId           String?
+  severity             AlertSeverity @default(HIGH)
+  status               AlertStatus   @default(ACTIVE)
+  readingCelsius       Float
+  minThresholdCelsius  Float
+  maxThresholdCelsius  Float
+  durationMinutes      Int           @default(5)
+  message              String
+  isSimulated          Boolean       @default(true)
+  acknowledgedByUserId String?
+  acknowledgedAt       DateTime?
+  resolutionNotes      String?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  sensor               Sensor        @relation(fields: [sensorId], references: [id])
+  batch                Batch?        @relation(fields: [batchId], references: [id])
+  shipment             Shipment?     @relation(fields: [shipmentId], references: [id])
+  acknowledgedByUser   User?         @relation(fields: [acknowledgedByUserId], references: [id])
+
+  @@map("temperature_alerts")
+}
+
+model BlockchainTransaction {
+  id               String   @id @default(uuid())
+  txId             String   @unique
+  channelId        String
+  chaincodeId      String
+  functionName     String
+  payloadHash      String
+  status           String
+  errorMessage     String?
+  peerEndorsements String?
+  blockNumber      Int?
+  timestamp        DateTime @default(now())
+
+  @@map("blockchain_transactions")
+}
+
+model ProductScanAudit {
+  id         String             @id @default(uuid())
+  code       String
+  scanType   String
+  status     VerificationStatus
+  location   String?
+  ipAddress  String?
+  userAgent  String?
+  batchId    String?
+  scannedAt  DateTime           @default(now())
+
+  batch      Batch?             @relation(fields: [batchId], references: [id])
+
+  @@index([code, scannedAt])
+  @@map("product_scan_audits")
+}
+
+model AuditLog {
+  id               String   @id @default(uuid())
+  userId           String
+  userName         String
+  userRole         UserRole
+  organizationName String
+  action           String
+  resourceType     String
+  resourceId       String
+  details          Json
+  ipAddress        String?
+  timestamp        DateTime @default(now())
+
+  user             User     @relation(fields: [userId], references: [id])
+
+  @@index([userId, timestamp])
+  @@index([action, timestamp])
+  @@map("audit_logs")
+}
+
+model SystemSetting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+
+  @@map("system_settings")
+}

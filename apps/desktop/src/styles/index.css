@@ -1,0 +1,435 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: #e2e8f0;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* =========================================================================
+   CRISP PROFESSIONAL HIGH-VISIBILITY INPUTS (PERMANENT LIGHT MODE)
+   ========================================================================= */
+
+/* Form Inputs, Textareas, and Selects: Uniform 2px Dark Border & Rounded-XL */
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]),
+textarea,
+select {
+  border: 2px solid #0f172a !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 0.75rem !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Disable manual resize grabbers and enable automatic height sizing */
+textarea {
+  resize: none !important;
+  field-sizing: content;
+}
+
+/* Dark Theme Input Variant */
+.dark-input,
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]),
+.dark textarea,
+.dark select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border: 2px solid #334155 !important;
+}
+
+.dark-input:hover,
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]):hover,
+.dark textarea:hover,
+.dark select:hover {
+  border-color: #14b8a6 !important;
+}
+
+.dark-input:focus,
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]):focus,
+.dark-input:focus-visible,
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]):focus-visible,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: #14b8a6 !important;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.35) !important;
+}
+
+.dark-input::placeholder,
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"])::placeholder,
+.dark textarea::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+/* Clean Hover State */
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]):hover,
+textarea:hover,
+select:hover {
+  border-color: #0284c7 !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Clean Focused Active State with Zero Outline Bleed */
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]):focus,
+textarea:focus,
+select:focus,
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([type="range"]):focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-color: #0284c7 !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25) !important;
+}
+
+/* Crisp Readable Placeholder Text Across All Vendors */
+input::placeholder,
+textarea::placeholder,
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+/* Glassmorphism & Clean Panels (Permanent Light Mode) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+/* =========================================================================
+   SCROLLBAR MANAGEMENT: HIDE MAIN SCROLLBAR WHILE PRESERVING SCROLLABILITY
+   ========================================================================= */
+
+/* Hide main scrollbar on root, body, main container & no-scrollbar utility */
+html,
+body,
+#root,
+main,
+.no-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar,
+main::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Subtle micro-scrollbars for secondary inner data widgets if needed */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Pharmacy and Cold-Chain Micro Animations */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.2); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.9; }
+}
+
+@keyframes ecg-dash {
+  0% { stroke-dashoffset: 300; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes transit-flow {
+  0% { left: 5%; opacity: 0.2; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { left: 95%; opacity: 0.2; }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ecg {
+  stroke-dasharray: 300;
+  animation: ecg-dash 2.5s linear infinite;
+}
+
+.animate-transit-flow {
+  animation: transit-flow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Toast Pop Up Notification Animations */
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-4px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-toast-enter {
+  animation: slide-in-right 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =========================================================================
+   MODERN SYSTEM MICRO-ANIMATIONS & ENTRANCE EFFECTS
+   ========================================================================= */
+
+/* Smooth Fade In Entrance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+/* Fluid Upward Slide Entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Modal Spring Scale In */
+@keyframes modalEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-enter {
+  animation: modalEnter 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Optical Cyber Scanner Laser Sweep */
+@keyframes scanLaser {
+  0% {
+    top: 0%;
+    opacity: 0.7;
+  }
+  50% {
+    top: 96%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.7;
+  }
+}
+
+.animate-scan-laser {
+  animation: scanLaser 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Concentric Aura Pulse / Telemetry Glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Active Live Beacon Dot Breathing */
+@keyframes liveBeacon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.85;
+  }
+}
+
+.animate-beacon {
+  animation: liveBeacon 2s ease-in-out infinite;
+}
+
+/* Metallic Light Shimmer Sweep */
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 3s infinite linear;
+}
+
+/* Tactile Card Elevation Utilities */
+.card-hover {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+}
+
+/* =========================================================================
+   HOLOGRAPHIC SCANNER HUD & GPS ROUTE RADAR ANIMATIONS
+   ========================================================================= */
+
+@keyframes holoRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes soundwaveBar {
+  0%, 100% { height: 25%; min-height: 2px; opacity: 0.35; }
+  50% { height: 100%; opacity: 1; }
+}
+
+@keyframes laserHoloSweep {
+  0% {
+    top: 2%;
+    opacity: 0.4;
+    filter: drop-shadow(0 0 6px #06b6d4);
+  }
+  50% {
+    top: 96%;
+    opacity: 1;
+    filter: drop-shadow(0 0 16px #22d3ee);
+  }
+  100% {
+    top: 2%;
+    opacity: 0.4;
+    filter: drop-shadow(0 0 6px #06b6d4);
+  }
+}
+
+@keyframes radarWave {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes transitFlowPulse {
+  0% {
+    stroke-dashoffset: 80;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-holo-rotate {
+  animation: holoRotate 22s linear infinite;
+}
+
+.animate-holo-laser {
+  animation: laserHoloSweep 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-soundwave-1 { animation: soundwaveBar 1s ease-in-out infinite 0.1s; }
+.animate-soundwave-2 { animation: soundwaveBar 1s ease-in-out infinite 0.35s; }
+.animate-soundwave-3 { animation: soundwaveBar 1s ease-in-out infinite 0.6s; }
+.animate-soundwave-4 { animation: soundwaveBar 1s ease-in-out infinite 0.2s; }
+.animate-soundwave-5 { animation: soundwaveBar 1s ease-in-out infinite 0.45s; }
+
+.animate-radar-ring {
+  animation: radarWave 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-transit-stream {
+  stroke-dasharray: 8 6;
+  animation: transitFlowPulse 2.2s linear infinite;
+}
+
+

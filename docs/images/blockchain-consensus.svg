@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 230" width="100%" height="230" style="background:#090d16;border-radius:14px;border:2px solid #1e293b;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,sans-serif;">
+  <defs>
+    <linearGradient id="block-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="active-block-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="glow-line" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes travelHash {
+      0% { transform: translateX(0); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateX(180px); opacity: 0; }
+    }
+    @keyframes pulseBlock {
+      0%, 100% { stroke: #0284c7; stroke-width: 1.5; }
+      50% { stroke: #38bdf8; stroke-width: 2.2; filter: drop-shadow(0 0 8px #0284c7); }
+    }
+    @keyframes blockConfirmed {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 1; filter: drop-shadow(0 0 6px #10b981); }
+    }
+    .flow-packet-1 { animation: travelHash 2.4s ease-in-out infinite; }
+    .flow-packet-2 { animation: travelHash 2.4s ease-in-out infinite 0.8s; }
+    .flow-packet-3 { animation: travelHash 2.4s ease-in-out infinite 1.6s; }
+    .active-block { animation: pulseBlock 3s ease-in-out infinite; }
+    .confirmed-badge { animation: blockConfirmed 2s ease-in-out infinite; }
+  </style>
+
+  <!-- Technical Background Grid -->
+  <path d="M 0,35 L 880,35 M 0,195 L 880,195" stroke="#1e293b" stroke-width="0.8" stroke-dasharray="3 5"/>
+
+  <!-- Top Banner Header -->
+  <g transform="translate(24, 25)">
+    <circle cx="6" cy="6" r="4" fill="#6366f1"/>
+    <text x="20" y="10" fill="#e2e8f0" font-size="12" font-weight="700" letter-spacing="1.2">CRYPTOGRAPHIC PROVENANCE &amp; FABRIC RAFT CONSENSUS PIPELINE</text>
+    <text x="590" y="10" fill="#64748b" font-size="11" font-family="monospace">HASH ALGO: SHA-256 CANONICAL</text>
+  </g>
+
+  <!-- Connector Lines Between Blocks -->
+  <line x1="200" y1="115" x2="260" y2="115" stroke="#334155" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <line x1="420" y1="115" x2="480" y2="115" stroke="#334155" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <line x1="640" y1="115" x2="700" y2="115" stroke="#334155" stroke-width="2.5" stroke-dasharray="4 4"/>
+
+  <!-- Animated Data Packets Flowing Across Blocks -->
+  <g transform="translate(200, 115)">
+    <circle cx="0" cy="0" r="4" fill="#06b6d4" class="flow-packet-1" filter="url(#glow-line)"/>
+  </g>
+  <g transform="translate(420, 115)">
+    <circle cx="0" cy="0" r="4" fill="#10b981" class="flow-packet-2" filter="url(#glow-line)"/>
+  </g>
+  <g transform="translate(640, 115)">
+    <circle cx="0" cy="0" r="4" fill="#a855f7" class="flow-packet-3" filter="url(#glow-line)"/>
+  </g>
+
+  <!-- Block #107: Genesis Formulation -->
+  <g transform="translate(40, 55)">
+    <rect width="160" height="120" rx="10" fill="url(#block-bg)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="28" rx="10" fill="#1e293b" fill-opacity="0.8"/>
+    <text x="12" y="18" fill="#94a3b8" font-size="10" font-weight="700" font-family="monospace">BLOCK #107</text>
+    <text x="120" y="18" fill="#10b981" font-size="9" font-weight="700">SEALED</text>
+    <text x="12" y="46" fill="#64748b" font-size="9" font-weight="600">ACTION TYPE</text>
+    <text x="12" y="60" fill="#cbd5e1" font-size="11" font-weight="700">NDC Formulation</text>
+    <text x="12" y="80" fill="#64748b" font-size="9" font-weight="600">PREV MERKLE HASH</text>
+    <text x="12" y="94" fill="#38bdf8" font-size="10" font-family="monospace">0x7a39...41e2</text>
+    <text x="12" y="110" fill="#64748b" font-size="8" font-family="monospace">TxID: 4f1a...c890</text>
+  </g>
+
+  <!-- Block #108: Batch Lot Serialization -->
+  <g transform="translate(260, 55)">
+    <rect width="160" height="120" rx="10" fill="url(#block-bg)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="28" rx="10" fill="#1e293b" fill-opacity="0.8"/>
+    <text x="12" y="18" fill="#94a3b8" font-size="10" font-weight="700" font-family="monospace">BLOCK #108</text>
+    <text x="120" y="18" fill="#10b981" font-size="9" font-weight="700">SEALED</text>
+    <text x="12" y="46" fill="#64748b" font-size="9" font-weight="600">LOT SERIALIZATION</text>
+    <text x="12" y="60" fill="#cbd5e1" font-size="11" font-weight="700">VAC-2026-990A</text>
+    <text x="12" y="80" fill="#64748b" font-size="9" font-weight="600">GS1-128 DIGEST</text>
+    <text x="12" y="94" fill="#38bdf8" font-size="10" font-family="monospace">0x9b12...e580</text>
+    <text x="12" y="110" fill="#64748b" font-size="8" font-family="monospace">Units: 50,000 Vials</text>
+  </g>
+
+  <!-- Block #109: Custody Transit & IoT Dispatch (Active) -->
+  <g transform="translate(480, 55)">
+    <rect width="160" height="120" rx="10" fill="url(#active-block-bg)" stroke="#0284c7" stroke-width="1.8" class="active-block"/>
+    <rect x="0" y="0" width="160" height="28" rx="10" fill="#0369a1" fill-opacity="0.5"/>
+    <text x="12" y="18" fill="#7dd3fc" font-size="10" font-weight="700" font-family="monospace">BLOCK #109</text>
+    <circle cx="140" cy="14" r="4" fill="#38bdf8" class="confirmed-badge"/>
+    <text x="12" y="46" fill="#94a3b8" font-size="9" font-weight="600">MULTI-SIG HANDOFF</text>
+    <text x="12" y="60" fill="#f8fafc" font-size="11" font-weight="700">Carrier Reefer #04</text>
+    <text x="12" y="80" fill="#94a3b8" font-size="9" font-weight="600">SENSOR ATTESTATION</text>
+    <text x="12" y="94" fill="#34d399" font-size="10" font-family="monospace">+4.2°C • 21 CFR Attested</text>
+    <text x="12" y="110" fill="#7dd3fc" font-size="8" font-family="monospace">Signer: MedExpress</text>
+  </g>
+
+  <!-- Block #110: Dispense Verification Terminal -->
+  <g transform="translate(700, 55)">
+    <rect width="144" height="120" rx="10" fill="url(#block-bg)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="144" height="28" rx="10" fill="#065f46" fill-opacity="0.4"/>
+    <text x="12" y="18" fill="#6ee7b7" font-size="10" font-weight="700" font-family="monospace">BLOCK #110</text>
+    <text x="12" y="46" fill="#64748b" font-size="9" font-weight="600">ZERO-TRUST AUDIT</text>
+    <text x="12" y="60" fill="#f8fafc" font-size="11" font-weight="700">Verified Authentic</text>
+    <text x="12" y="80" fill="#64748b" font-size="9" font-weight="600">DISPENSE DESTINATION</text>
+    <text x="12" y="94" fill="#10b981" font-size="10" font-family="monospace">Apollo Healthcare</text>
+    <text x="12" y="110" fill="#10b981" font-size="8" font-family="monospace">Patient Dispense OK</text>
+  </g>
+
+  <!-- Bottom Consensus Status Footer -->
+  <g transform="translate(40, 208)">
+    <text x="0" y="0" fill="#64748b" font-size="10">IMMUTABLE BLOCK HEIGHT: 110</text>
+    <text x="210" y="0" fill="#64748b" font-size="10">CONSENSUS PROTOCOL: RAFT (3 ORDERER PEERS)</text>
+    <text x="520" y="0" fill="#64748b" font-size="10">HASH INTEGRITY: 100.00% CANONICAL MATCH</text>
+    <text x="740" y="0" fill="#38bdf8" font-size="10" font-weight="700">● LEDGER SYNCED</text>
+  </g>
+</svg>
