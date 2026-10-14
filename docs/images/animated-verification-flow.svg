@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 230" width="100%" height="230" style="background:#090d16;border-radius:14px;border:2px solid #0f172a;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,sans-serif;box-shadow:0 12px 32px rgba(0,0,0,0.3);">
+  <defs>
+    <linearGradient id="laser-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#2dd4bf" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="card-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <filter id="neon-laser" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="badge-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes laserSweepVertical {
+      0% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(85px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.4; }
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes checkPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); filter: drop-shadow(0 0 10px #10b981); }
+    }
+    @keyframes textGlow {
+      0%, 100% { fill: #2dd4bf; }
+      50% { fill: #38bdf8; }
+    }
+    .sweep-laser {
+      animation: laserSweepVertical 2.2s ease-in-out infinite;
+    }
+    .typing-cursor {
+      animation: cursorBlink 0.8s infinite;
+    }
+    .pass-shield {
+      transform-origin: 805px 115px;
+      animation: checkPulse 2.5s ease-in-out infinite;
+    }
+    .glow-header {
+      animation: textGlow 3s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Top Terminal Bar -->
+  <rect x="0" y="0" width="920" height="34" fill="#0f172a" rx="14" ry="14"/>
+  <rect x="0" y="20" width="920" height="15" fill="#0f172a"/>
+  <circle cx="20" cy="17" r="4.5" fill="#ef4444"/>
+  <circle cx="36" cy="17" r="4.5" fill="#f59e0b"/>
+  <circle cx="52" cy="17" r="4.5" fill="#10b981"/>
+  <text x="76" y="21" fill="#94a3b8" font-size="11" font-weight="700" font-family="monospace">meditrace-zero-trust-optical-validator --stream=zxing-camera-v4</text>
+  <text x="740" y="21" fill="#64748b" font-size="10" font-family="monospace">MODE: REAL-TIME INGEST</text>
+
+  <!-- Main Container Grid -->
+  <g transform="translate(24, 46)">
+    <!-- Column 1: Optical Scan HUD Box -->
+    <rect x="0" y="0" width="130" height="130" rx="10" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5"/>
+    <!-- Laser Target Corners -->
+    <path d="M 10,24 L 10,10 L 24,10" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 120,24 L 120,10 L 106,10" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 10,106 L 10,120 L 24,120" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 120,106 L 120,120 L 106,120" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Simulated 2D Matrix Pattern -->
+    <g fill="#e2e8f0" transform="translate(22, 22)">
+      <rect x="0" y="0" width="22" height="22" rx="2"/>
+      <rect x="64" y="0" width="22" height="22" rx="2"/>
+      <rect x="0" y="64" width="22" height="22" rx="2"/>
+      <rect x="28" y="0" width="8" height="8"/>
+      <rect x="42" y="0" width="14" height="8"/>
+      <rect x="28" y="14" width="28" height="8"/>
+      <rect x="0" y="28" width="8" height="28"/>
+      <rect x="14" y="28" width="14" height="14"/>
+      <rect x="34" y="34" width="18" height="18"/>
+      <rect x="58" y="28" width="28" height="14"/>
+      <rect x="58" y="48" width="14" height="20"/>
+      <rect x="78" y="48" width="8" height="20"/>
+      <rect x="28" y="58" width="22" height="14"/>
+      <rect x="28" y="78" width="58" height="8"/>
+    </g>
+
+    <!-- Animated Neon Laser Sweep -->
+    <g class="sweep-laser" filter="url(#neon-laser)">
+      <line x1="8" y1="20" x2="122" y2="20" stroke="#2dd4bf" stroke-width="2.5"/>
+      <rect x="8" y="12" width="114" height="16" fill="url(#laser-grad)"/>
+    </g>
+
+    <!-- Column 2: Forensic Parser Deconstruction (Center Terminal) -->
+    <g transform="translate(148, 0)">
+      <rect x="0" y="0" width="510" height="130" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      
+      <!-- Terminal Line 1 -->
+      <g transform="translate(16, 22)">
+        <text x="0" y="0" fill="#64748b" font-size="10" font-family="monospace">&gt; DETECTED PAYLOAD:</text>
+        <text x="135" y="0" fill="#38bdf8" font-size="11" font-weight="700" font-family="monospace">(01)00300010034567(17)271010(10)VAC-2026-089A(21)SN8921</text>
+      </g>
+
+      <!-- Deconstructed Chips Grid -->
+      <g transform="translate(16, 38)">
+        <!-- GTIN Chip -->
+        <rect x="0" y="0" width="112" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="8" y="14" fill="#94a3b8" font-size="8" font-weight="700" font-family="monospace">AI (01) GTIN-14</text>
+        <text x="8" y="28" fill="#f8fafc" font-size="10" font-weight="800" font-family="monospace">00300010034567</text>
+
+        <!-- Expiry Chip -->
+        <rect x="120" y="0" width="112" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="8" y="14" fill="#94a3b8" font-size="8" font-weight="700" font-family="monospace">AI (17) EXPIRATION</text>
+        <text x="8" y="28" fill="#10b981" font-size="10" font-weight="800" font-family="monospace">2027-10-10 (VALID)</text>
+
+        <!-- Batch Chip -->
+        <rect x="240" y="0" width="112" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="8" y="14" fill="#94a3b8" font-size="8" font-weight="700" font-family="monospace">AI (10) BATCH / LOT</text>
+        <text x="8" y="28" fill="#f8fafc" font-size="10" font-weight="800" font-family="monospace">VAC-2026-089A</text>
+
+        <!-- Serial Chip -->
+        <rect x="360" y="0" width="112" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="8" y="14" fill="#94a3b8" font-size="8" font-weight="700" font-family="monospace">AI (21) SERIAL NO</text>
+        <text x="8" y="28" fill="#f8fafc" font-size="10" font-weight="800" font-family="monospace">SN8921-X99</text>
+      </g>
+
+      <!-- Terminal Line 3: Cryptographic Merkle Hash Check -->
+      <g transform="translate(16, 96)">
+        <rect x="0" y="0" width="478" height="24" rx="4" fill="#070b12" stroke="#334155" stroke-width="0.8"/>
+        <text x="8" y="16" fill="#64748b" font-size="9" font-family="monospace">HASH:</text>
+        <text x="44" y="16" fill="#a7f3d0" font-size="9" font-family="monospace">0x7f4b82c199e403d198... MATCHED ROOT 0x7f4b82</text>
+        <text x="360" y="16" fill="#38bdf8" font-size="9" font-family="monospace">| SCANS: 1/4</text>
+        <rect x="440" y="6" width="6" height="12" fill="#2dd4bf" class="typing-cursor"/>
+      </g>
+    </g>
+
+    <!-- Column 3: Zero-Trust Decision Stamp (Right Badge) -->
+    <g transform="translate(672, 0)">
+      <rect x="0" y="0" width="200" height="130" rx="10" fill="#022c22" stroke="#10b981" stroke-width="2" filter="url(#badge-glow)"/>
+      <g class="pass-shield">
+        <circle cx="100" cy="46" r="22" fill="#047857" stroke="#34d399" stroke-width="2.5"/>
+        <path d="M 91,46 L 97,52 L 109,40" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text x="100" y="86" fill="#6ee7b7" font-size="12" font-weight="900" text-anchor="middle" letter-spacing="0.8">VERIFIED AUTHENTIC</text>
+      <text x="100" y="102" fill="#a7f3d0" font-size="9" font-weight="700" font-family="monospace" text-anchor="middle">DISPENSE AUTHORIZED</text>
+      <rect x="36" y="110" width="128" height="12" rx="3" fill="#065f46"/>
+      <text x="100" y="119" fill="#ecfdf5" font-size="8" font-weight="800" font-family="monospace" text-anchor="middle">BLOCK #108 • 0x4f9a</text>
+    </g>
+  </g>
+
+  <!-- Bottom Forensic Audit String -->
+  <g transform="translate(24, 204)">
+    <text x="0" y="12" fill="#64748b" font-size="10" font-family="monospace">21 CFR PART 11 FORENSIC LOG: HASH VERIFIED • ZERO EXCURSIONS • MERKLE SEAL INTACT • CDSCO/FDA REGULATORY NODE</text>
+  </g>
+</svg>

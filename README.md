@@ -16,6 +16,7 @@
   <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Desktop-Electron%2030-61dafb.svg" alt="Desktop Shell" /></a>
   <a href="https://www.hyperledger.org/"><img src="https://img.shields.io/badge/Blockchain-Hyperledger%20Fabric%20%2F%20SHA--256-orange.svg" alt="Blockchain" /></a>
   <a href="https://www.fda.gov/"><img src="https://img.shields.io/badge/Regulatory-21%20CFR%20Part%2011%20%7C%20GAMP%205-purple.svg" alt="Compliance" /></a>
+  <a href="#-live-animated-telemetry--forensic-visualizers"><img src="https://img.shields.io/badge/Live%20Animations-SVG%20Telemetry%20Engines-10b981.svg" alt="Live SVG Animations" /></a>
   <a href="#-ui-design-system--sensory-highlights"><img src="https://img.shields.io/badge/UI%20Aesthetic-High--Contrast%20Outlines%20(2px)-slate.svg" alt="High Contrast Outlines" /></a>
   <a href="#-page-1-cyber-pharma-authentication-portal-login"><img src="https://img.shields.io/badge/Auth%20Theme-Cyber--Pharma%20Dark-teal.svg" alt="Authentication Theme" /></a>
 </p>
@@ -30,6 +31,7 @@
 
 - [Overview](#-overview)
 - [Key Architectural Pillars](#-key-architectural-pillars)
+- [Live Animated Telemetry & Forensic Visualizers](#-live-animated-telemetry--forensic-visualizers)
 - [Live UI Showcase & Visual Tour](#-live-ui-showcase--visual-tour)
 - [Web Application & Site Access](#-web-application--site-access)
 - [Site Navigation & Complete Page-by-Page Tour](#-site-navigation--complete-page-by-page-tour)
@@ -78,6 +80,12 @@ The platform unites:
 ---
 
 ## 🚀 Key Architectural Pillars
+
+<p align="center">
+  <img src="./docs/images/animated-pipeline.svg" alt="Live Animated Supply Chain Provenance Pipeline" width="920" />
+</p>
+
+> **⚡ Live Animated Telemetry Engine:** Real-time continuous SVG simulation showing physical batch packet transit (`.moving-particle`), pulsating node beacons (`.beacon`), dynamic flow lines, and acoustic telemetry activity visualizer bars from Pharmaceutical Cleanrooms (`Block #108`) through Reefer Transit (`3.8°C`), Central Depot Hub custody signing, and Point-of-Dispense zero-trust verification.
 
 ```mermaid
 flowchart LR
@@ -139,6 +147,71 @@ sequenceDiagram
         Ledger-->>Pharm: 🔴 TAMPER DETECTED - Quarantined Immediately
     end
 ```
+
+---
+
+## 💫 Live Animated Telemetry & Forensic Visualizers
+
+Medi Trace utilizes native animated SVG vector telemetry engines engineered with zero external dependencies. They render natively inside GitHub markdown, web browsers, and desktop shells to visualize continuous real-time processes:
+
+### 1. ⚡ Live Supply Chain Provenance Transit Pipeline
+<p align="center">
+  <img src="./docs/images/animated-pipeline.svg" alt="Live Animated Supply Chain Pipeline" width="920" />
+</p>
+
+> **Dynamic Visual Elements:**
+> - **Continuous Batch Transit Pulse (`.moving-particle`):** Demonstrates real-time custody packet flow traversing the 4 critical supply chain checkpoints.
+> - **Pulsating Facility Beacons (`.beacon`):** Expanding radar beacons identifying active nodes with cryptographic SHA-256 state anchors.
+> - **Acoustic Sensor Activity Bars (`.bar-1` to `.bar-4`):** Dynamic soundwave visualizers reflecting live telemetry packet ingestion.
+
+---
+
+### 2. 🎯 Zero-Trust Optical GS1 DataMatrix Scanner HUD
+<p align="center">
+  <img src="./docs/images/scanner-hud.svg" alt="Animated Zero-Trust Optical Scanner HUD" width="880" />
+</p>
+
+> **Dynamic Visual Elements:**
+> - **Vertical Neon Targeting Laser (`.scanner-laser`):** Continuous 2.0-second oscillating laser sweep across physical packaging matrices.
+> - **Rotating Cybernetic Reticle (`.hud-ring`):** 360-degree holographic crosshair guiding operator alignment.
+> - **Live Optical Decoder Status:** Simulates real-time hardware webcam frame analysis and ZXing symbology parsing.
+
+---
+
+### 3. 🔬 Optical Forensic Verification Terminal & GS1 Parser
+<p align="center">
+  <img src="./docs/images/animated-verification-flow.svg" alt="Animated Forensic Terminal and Parser" width="920" />
+</p>
+
+> **Dynamic Visual Elements:**
+> - **Bi-Directional Laser Sweep (`.sweep-laser`):** Rapid optical matrix interrogation with neon teal glow filter.
+> - **Forensic Data Matrix Breakdown:** Deconstructs physical GS1 Application Identifiers (`(01) GTIN-14`, `(17) EXPIRY`, `(10) LOT`, `(21) SERIAL`).
+> - **Blinking Terminal Cursor (`.typing-cursor`):** Simulates live automated payload ingestion into the cryptographic verification engine.
+> - **Pulsating Cryptographic Shield (`.pass-shield`):** High-frequency emerald glow confirming zero-trust ledger match and tamper-free provenance.
+
+---
+
+### 4. 📡 Cold-Chain Cryogenic Telemetry Radar & ECG Signal Stream
+<p align="center">
+  <img src="./docs/images/cold-chain-telemetry.svg" alt="Animated Cold-Chain Telemetry Radar" width="880" />
+</p>
+
+> **Dynamic Visual Elements:**
+> - **Dynamic ECG Fluctuation Pulse Wave (`.ecg-line`):** Oscillating 3.5-second live telemetry waveform monitoring thermal stability.
+> - **Active Radar Sweep Beacon (`.beacon-ring`):** Expanding radar ping rings mapping refrigerated freight transit.
+> - **Pulsing Sensor Health LEDs (`.live-dot`):** Real-time green sentinel heartbeat tracking IoT UDP/MQTT ingestion buffers.
+
+---
+
+### 5. ⛓️ Cryptographic Merkle Provenance & Consensus Block Pipeline
+<p align="center">
+  <img src="./docs/images/blockchain-consensus.svg" alt="Animated Blockchain Merkle Consensus Pipeline" width="880" />
+</p>
+
+> **Dynamic Visual Elements:**
+> - **Continuous Hash Packet Propagation (`.flow-packet-1/2/3`):** Traveling SHA-256 data packets crossing peer blocks in staggered 0.8-second intervals.
+> - **Pulsating Active Block Commit Beacon (`.active-block`):** Dynamic neon glow on block `#111` signaling real-time Raft consensus finality.
+> - **Tamper-Evident Confirmation Badges (`.confirmed-badge`):** Pulsing status badges verifying cryptographic Merkle state validity.
 
 ---
 
@@ -350,6 +423,12 @@ Rather than a generic layout, the dashboard detects the active user's role and r
   - ⚡ `Drain Battery` — Simulates sensor power loss for maintenance triage.
 
 <p align="center">
+  <img src="./docs/images/cold-chain-telemetry.svg" alt="Live Cold-Chain Telemetry Radar Animation" width="840" />
+</p>
+
+> **Live Cold-Chain Telemetry Radar (Above):** Animated SVG telemetry monitor displaying real-time temperature ECG waveform fluctuations (`.ecg-line`), active beacon radar ping rings (`.beacon-ring`), and live green sentinel health indicators (`.live-dot`).
+
+<p align="center">
   <img src="./docs/images/ui-cold-chain-map.png" alt="Cold-Chain Monitoring & GIS Route Map Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
 </p>
 
@@ -393,6 +472,18 @@ pie title Cold-Chain Fleet Telemetry Distribution by Storage Class
 - **Interactive Troubleshooting Guide:** Built-in guidance panel explaining verification outcomes with 1-click test buttons for authentic, in-transit, excursion-flagged, and counterfeit batches.
 
 <p align="center">
+  <img src="./docs/images/animated-verification-flow.svg" alt="Optical Forensic Verification Terminal Animation" width="840" />
+</p>
+
+> **Zero-Trust Optical Terminal Animation (Above):** Real-time SVG animation illustrating laser sweeping over 2D matrix cells (`.sweep-laser`), GS1 Application Identifier decomposition (`(01) GTIN`, `(17) EXP`, `(10) LOT`, `(21) SERIAL`), dynamic terminal typing cursor (`.typing-cursor`), and pulsing green cryptographic authenticity shield (`.pass-shield`).
+
+<p align="center">
+  <img src="./docs/images/scanner-hud.svg" alt="Zero-Trust Optical Scanner HUD Animation" width="840" />
+</p>
+
+> **Scanner HUD Animation (Above):** Animated viewfinder showing the rotating cybernetic targeting reticle (`.hud-ring`), neon laser targeting sweep, and real-time acoustic soundwave visualizer bars.
+
+<p align="center">
   <img src="./docs/images/ui-verification-scanner.png" alt="Optical GS1 Verification Station Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
 </p>
 
@@ -430,6 +521,12 @@ flowchart TD
   - `FABRIC_LIVE`: Enterprise multi-peer Hyperledger Fabric cluster with Go smart contracts.
 - **Cryptographic State Integrity Validator:** 1-click tool that recalculates Merkle roots across all blocks and confirms zero database tampering.
 - **Raw Transaction Payload Inspector:** View serialized transaction metadata, endorsing peer signatures, and smart contract function invocations.
+
+<p align="center">
+  <img src="./docs/images/blockchain-consensus.svg" alt="Distributed Cryptographic Blockchain Consensus Animation" width="840" />
+</p>
+
+> **Blockchain Consensus Animation (Above):** Live SVG animation tracing cryptographic SHA-256 state packets propagating between peer blocks (`.flow-packet`), active block commit beacon glow (`.active-block`), and Merkle root tamper-evident confirmation badges.
 
 <p align="center">
   <img src="./docs/images/ui-blockchain-ledger.png" alt="Cryptographic Blockchain Ledger Explorer Screenshot" width="840" style="border: 2px solid #0f172a; border-radius: 10px;" />
